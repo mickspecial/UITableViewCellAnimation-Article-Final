@@ -8,11 +8,11 @@
 
 import UIKit
 
-final class Animator {
-	private var hasAnimatedAllCells = false
-	private let animation: Animation
+final class CellAnimator {
+	private (set) var hasAnimatedAllCells = false
+	private let animation: CellAnimation
 
-	init(animation: @escaping Animation) {
+	init(animation: @escaping CellAnimation) {
 		self.animation = animation
 	}
 

@@ -17,9 +17,13 @@ class TableViewController: UITableViewController {
 	// MARK: - Table view data source and delegate methods
 
 	override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-		let animation = AnimationFactory.makeSlideIn(duration: 0.5, delayFactor: 0.05)
-		let animator = Animator(animation: animation)
+		let animation = CellAnimationFactory.makeSlideIn(duration: 0.5, delayFactor: 0.05)
+		let animator = CellAnimator(animation: animation)
 		animator.animate(cell: cell, at: indexPath, in: tableView)
+		
+		if animator.hasAnimatedAllCells {
+			print("do something if needed")
+		}
 	}
 }
 

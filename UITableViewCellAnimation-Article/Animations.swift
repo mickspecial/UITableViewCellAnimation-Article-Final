@@ -8,11 +8,11 @@
 
 import UIKit
 
-typealias Animation = (UITableViewCell, IndexPath, UITableView) -> Void
+typealias CellAnimation = (UITableViewCell, IndexPath, UITableView) -> Void
 
-enum AnimationFactory {
+enum CellAnimationFactory {
 
-	static func makeFade(duration: TimeInterval, delayFactor: Double) -> Animation {
+	static func makeFade(duration: TimeInterval, delayFactor: Double) -> CellAnimation {
 		return { cell, indexPath, _ in
 			cell.alpha = 0
 
@@ -25,7 +25,7 @@ enum AnimationFactory {
 		}
 	}
 
-	static func makeMoveUpWithBounce(rowHeight: CGFloat, duration: TimeInterval, delayFactor: Double) -> Animation {
+	static func makeMoveUpWithBounce(rowHeight: CGFloat, duration: TimeInterval, delayFactor: Double) -> CellAnimation {
 		return { cell, indexPath, tableView in
 			cell.transform = CGAffineTransform(translationX: 0, y: rowHeight)
 
@@ -41,7 +41,7 @@ enum AnimationFactory {
 		}
 	}
 
-	static func makeSlideIn(duration: TimeInterval, delayFactor: Double) -> Animation {
+	static func makeSlideIn(duration: TimeInterval, delayFactor: Double) -> CellAnimation {
 		return { cell, indexPath, tableView in
 			cell.transform = CGAffineTransform(translationX: tableView.bounds.width, y: 0)
 
@@ -55,7 +55,7 @@ enum AnimationFactory {
 		}
 	}
 
-	static func makeMoveUpWithFade(rowHeight: CGFloat, duration: TimeInterval, delayFactor: Double) -> Animation {
+	static func makeMoveUpWithFade(rowHeight: CGFloat, duration: TimeInterval, delayFactor: Double) -> CellAnimation {
 		return { cell, indexPath, tableView in
 			cell.transform = CGAffineTransform(translationX: 0, y: rowHeight / 2)
 			cell.alpha = 0
